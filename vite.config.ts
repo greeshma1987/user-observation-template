@@ -2,13 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-// ✅ Correct: single export with everything merged
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'), // 👈 keeps your @ alias working
+      '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/user-observation-template/', // 👈 GitHub Pages base path
+  base: './', // ✅ important for Netlify & GitHub Pages
 });
