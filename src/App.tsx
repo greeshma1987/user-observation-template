@@ -19,6 +19,17 @@ import {
 export default function App() {
   const { darkMode, toggleTheme } = useTheme();
 
+  // Reusable footer component
+  const Footer = () => (
+    <p
+      className={`mt-8 text-center text-xs sm:text-sm italic ${
+        darkMode ? "text-slate-400" : "text-slate-500"
+      }`}
+    >
+      © 2025 • AEIOU & POEMS Frameworks by Dr Greeshma Sharma
+    </p>
+  );
+
   return (
     <div className="p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -73,7 +84,7 @@ export default function App() {
         </header>
 
         {/* Tabs Navigation */}
-        <Tabs defaultValue="aeiou" className="w-full">
+        <Tabs defaultValue="guide" className="w-full">
           <TabsList
             className={`grid w-full grid-cols-5 mb-6 ${
               darkMode
@@ -82,6 +93,13 @@ export default function App() {
             } p-1 rounded-2xl shadow-sm items-center h-12`}
           >
             {[
+              {
+                value: "guide",
+                icon: BookOpen,
+                label: "Guide",
+                gradient: "from-pink-200 to-pink-100",
+                dark: "from-pink-700 to-pink-600",
+              },
               {
                 value: "aeiou",
                 icon: Clipboard,
@@ -102,13 +120,6 @@ export default function App() {
                 label: "Insights",
                 gradient: "from-yellow-200 to-yellow-100",
                 dark: "from-yellow-600 to-yellow-500",
-              },
-              {
-                value: "guide",
-                icon: BookOpen,
-                label: "Guide",
-                gradient: "from-pink-200 to-pink-100",
-                dark: "from-pink-700 to-pink-600",
               },
               {
                 value: "download",
@@ -135,24 +146,33 @@ export default function App() {
             ))}
           </TabsList>
 
-          <TabsContent value="aeiou" className="mt-0">
-            <AEIOUFramework />
-          </TabsContent>
-
-          <TabsContent value="poems" className="mt-0">
-            <POEMSFramework />
-          </TabsContent>
-
-          <TabsContent value="insights" className="mt-0">
-            <InsightsDashboard />
-          </TabsContent>
-
+          {/* GUIDE */}
           <TabsContent value="guide" className="mt-0">
             <FieldGuide />
           </TabsContent>
 
+          {/* AEIOU */}
+          <TabsContent value="aeiou" className="mt-0">
+            <AEIOUFramework />
+            <Footer />
+          </TabsContent>
+
+          {/* POEMS */}
+          <TabsContent value="poems" className="mt-0">
+            <POEMSFramework />
+            <Footer />
+          </TabsContent>
+
+          {/* INSIGHTS */}
+          <TabsContent value="insights" className="mt-0">
+            <InsightsDashboard />
+            <Footer />
+          </TabsContent>
+
+          {/* DOWNLOAD */}
           <TabsContent value="download" className="mt-0">
             <CodeDownloader />
+            <Footer />
           </TabsContent>
         </Tabs>
       </div>

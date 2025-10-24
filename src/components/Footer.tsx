@@ -44,21 +44,7 @@ export function Footer() {
             }`} 
           />
           
-          <div className="flex items-center gap-4">
-            <a
-              href="https://greeshmasharma.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`hover:underline transition-colors text-sm md:text-base ${
-                highContrast 
-                  ? 'text-blue-400 hover:text-blue-300' 
-                  : 'text-blue-600 hover:text-blue-700'
-              }`}
-              aria-label="Visit Dr. Greeshma Sharma's website"
-            >
-              greeshmasharma.com
-            </a>
-          </div>
+          
         </div>
         
         <Separator className={`my-4 ${
